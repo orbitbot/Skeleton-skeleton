@@ -1,0 +1,27 @@
+{
+  "name": "Skeleton-skeleton",
+  "version": "1.0.0",
+  "description": "A Gulp/LESS toolchain for the Skeleton CSS framework",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orbitbot/Skeleton-skeleton.git"
+  },
+  "author": "Patrik Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orbitbot/Skeleton-skeleton/issues"
+  },
+  "homepage": "https://github.com/orbitbot/Skeleton-skeleton",
+  "devDependencies": {
+    "browser-sync": "^1.8.2",
+    "gulp": "^3.8.10",
+    "gulp-asset-transform": "^1.6.2",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-less": "^2.0.1",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^1.1.0"
+  }
+}
