@@ -16,26 +16,26 @@ gulp.task('at-build', function() {
   return gulp.src(paths.index)
     .pipe(at({
       css: {
-        stream: function(filestream, outputFilename){
-            return filestream
-                .pipe(plugins.size({ title: 'css', showFiles: true }))
-                .pipe(gulp.dest('dist/'))
-                .pipe(minifyCss())
-                .pipe(plugins.rename({ suffix: '.min' }))
-                .pipe(plugins.size({ title: 'minfied css', showFiles: true}))
-                .pipe(gulp.dest('dist/'));
+        stream: function(filestream, outputFilename) {
+          return filestream
+            .pipe(plugins.size({ title: 'css', showFiles: true }))
+            .pipe(gulp.dest('dist/'))
+            .pipe(minifyCss())
+            .pipe(plugins.rename({ suffix: '.min' }))
+            .pipe(plugins.size({ title: 'minfied css', showFiles: true}))
+            .pipe(gulp.dest('dist/'));
         }
       },
       less: {
-        stream: function(filestream, outputFilename){
-            return filestream
-                .pipe(plugins.less())
-                .pipe(plugins.size({ title: 'less', showFiles: true }))
-                .pipe(gulp.dest('dist/'))
-                .pipe(minifyCss())
-                .pipe(plugins.rename({ suffix: '.min' }))
-                .pipe(plugins.size({ title: 'minfied less', showFiles: true}))
-                .pipe(gulp.dest('dist/'));
+        stream: function(filestream, outputFilename) {
+          return filestream
+            .pipe(plugins.less())
+            .pipe(plugins.size({ title: 'less', showFiles: true }))
+            .pipe(gulp.dest('dist/'))
+            .pipe(minifyCss())
+            .pipe(plugins.rename({ suffix: '.min' }))
+            .pipe(plugins.size({ title: 'minfied less', showFiles: true}))
+            .pipe(gulp.dest('dist/'));
         }
       }
     }))
