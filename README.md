@@ -29,12 +29,13 @@ $ git clone https://github.com/orbitbot/Skeleton-skeleton.git
 $ npm install
 $ gulp
 ```
-... and open [http://localhost:8080](http://localhost:8080) in a browser.
+... and open [http://localhost:8080](http://localhost:8080) in a browser. Edit the source index.html file and the Skeleton LESS, Gulp & BrowserSync will update your browser page automagically on file save. Mix in whatever else you need to flesh out your site. It's still just a starting point, but this time with a toolchain bolted on for speedy developing.
 
+Use the provided ```gulp minify``` task to minfiy your distribution CSS.
 
 ## License
 
-All parts of Skeleton are free to use and abuse under the [open-source MIT license](http://opensource.org/licenses/mit-license.php).
+All parts of Skeleton & the Skeleton-skeleton are free to use and abuse under the [open-source MIT license](http://opensource.org/licenses/mit-license.php).
 
 
 ## Acknowledgement
