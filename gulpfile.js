@@ -6,6 +6,7 @@ var at = require('gulp-asset-transform');
 var minifyCss = require('gulp-minify-css');
 
 var paths = {
+  distCss: 'dist/css/',
   fonts  : 'src/fonts/*.*',
   images : 'src/images/**',
   index  : 'src/index.html',
@@ -16,30 +17,13 @@ gulp.task('at-build', function() {
   return gulp.src(paths.index)
     .pipe(at({
       css: {
-        stream: function(filestream, outputFilename) {
-          return filestream
-            .pipe(plugins.size({ title: 'css', showFiles: true }))
-            .pipe(gulp.dest('dist/'))
-            .pipe(minifyCss())
-            .pipe(plugins.rename({ suffix: '.min' }))
-            .pipe(plugins.size({ title: 'minfied css', showFiles: true}))
-            .pipe(gulp.dest('dist/'));
-        }
+        tasks: ['concat', plugins.size({ title: 'css', showFiles: true })]
       },
       less: {
-        stream: function(filestream, outputFilename) {
-          return filestream
-            .pipe(plugins.less())
-            .pipe(plugins.size({ title: 'less', showFiles: true }))
-            .pipe(gulp.dest('dist/'))
-            .pipe(minifyCss())
-            .pipe(plugins.rename({ suffix: '.min' }))
-            .pipe(plugins.size({ title: 'minfied less', showFiles: true}))
-            .pipe(gulp.dest('dist/'));
-        }
+        tasks: ['concat', plugins.less(), plugins.size({ title: 'less', showFiles: true})]
       }
     }))
-    .pipe(gulp.dest('dist/')) // required for index.html file
+    .pipe(gulp.dest('dist/'))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -74,3 +58,11 @@ gulp.task('watch', function() {
 gulp.task('copy-assets', ['copy-images', 'copy-fonts']);
 gulp.task('build', ['at-build', 'copy-assets']);
 gulp.task('default', ['build', 'server', 'watch']);
+
+gulp.task('minify', function() {
+  gulp.src(paths.distCss + '*.css')
+    .pipe(minifyCss())
+    .pipe(plugins.rename({ suffix: '.min' }))
+    .pipe(plugins.size({ title: 'minified css', showFiles: true }))
+    .pipe(gulp.dest(paths.distCss));
+});

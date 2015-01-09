@@ -1,9 +1,9 @@
 The MIT License (MIT)
 
-Skeleton-skeleton
+Skeleton-skeleton  
 Copyright (c) 2015 Patrik Johnson -- http://github.com/orbitbot
 
-Skeleton
+Skeleton  
 Copyright (c) 2011-2014 Dave Gamache
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
