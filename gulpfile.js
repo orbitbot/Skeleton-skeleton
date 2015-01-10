@@ -31,7 +31,7 @@ gulp.task('copy-images', function() {
   return gulp.src(paths.images)
     .pipe(plugins.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
     .pipe(plugins.size({ title: 'images', showFiles: true }))
-    .pipe(gulp.dest('dist/img'));
+    .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('copy-fonts', function() {
@@ -53,6 +53,7 @@ gulp.task('server', function() {
 
 gulp.task('watch', function() {
   gulp.watch([paths.less, paths.index], ['at-build']);
+  gulp.watch([paths.images, paths.fonts], ['copy-assets']);
 });
 
 gulp.task('copy-assets', ['copy-images', 'copy-fonts']);
@@ -60,7 +61,7 @@ gulp.task('build', ['at-build', 'copy-assets']);
 gulp.task('default', ['build', 'server', 'watch']);
 
 gulp.task('minify', function() {
-  gulp.src(paths.distCss + '*.css')
+  gulp.src([paths.distCss + '*.css', '!' + paths.distCss + '*.min.css'])
     .pipe(minifyCss())
     .pipe(plugins.rename({ suffix: '.min' }))
     .pipe(plugins.size({ title: 'minified css', showFiles: true }))
