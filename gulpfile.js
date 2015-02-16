@@ -20,7 +20,9 @@ gulp.task('at-build', function() {
         tasks: ['concat', plugins.size({ title: 'css', showFiles: true })]
       },
       less: {
-        tasks: ['concat', plugins.less(), plugins.size({ title: 'less', showFiles: true})]
+        tasks: ['concat',
+                plugins.less().on('error', plugins.util.log),
+                plugins.size({ title: 'less', showFiles: true})]
       }
     }))
     .pipe(gulp.dest('dist/'))
